@@ -55,7 +55,7 @@ void startup()
    /* Initialize the Ready list, etc. */
    if (DEBUG && debugflag)
       console("startup(): initializing the Ready & Blocked lists\n");
-   // ReadyList = NULL;
+   ReadyList = NULL;
 
    /* Initialize the clock interrupt handler */
 
@@ -241,7 +241,7 @@ void dispatcher(void)
    Side Effects -  if system is in deadlock, print appropriate error
 		   and halt.
    ----------------------------------------------------------------------- */
-int sentinel (void * dummy)
+int sentinel (char * dummy)
 {
    if (DEBUG && debugflag)
       console("sentinel(): called\n");
@@ -273,9 +273,3 @@ void disableInterrupts()
     /* We ARE in kernel mode */
     psr_set( psr_get() & ~PSR_CURRENT_INT );
 } /* disableInterrupts */
-
-/* TODO: Complete Function*/
-static void enableInterrupts()
-{
-	
-}
